@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Hard\" />
+    <Folder Include="Medium\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hello.LeetCode.Core\Hello.LeetCode.Core.csproj" />
+  </ItemGroup>
+</Project>
