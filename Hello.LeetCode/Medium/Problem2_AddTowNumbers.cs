@@ -6,7 +6,7 @@
 /// </summary>
 public class Problem2_AddTowNumbers
 {
-    public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+    public ListNode? AddTwoNumbers(ListNode l1, ListNode l2)
     {
         var dummyHead = new ListNode();
         var p1 = l1;
@@ -30,7 +30,7 @@ public class Problem2_AddTowNumbers
         return dummyHead.next;
     }
 
-    public ListNode AddTwoNumbers2(ListNode l1, ListNode l2)
+    public ListNode? AddTwoNumbers2(ListNode l1, ListNode l2)
     {
         var dummyHead = new ListNode();
         var p1 = l1;
