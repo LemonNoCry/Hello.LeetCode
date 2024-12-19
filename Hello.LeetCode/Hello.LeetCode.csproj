@@ -2,9 +2,6 @@
   <PropertyGroup>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Hard\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Hello.LeetCode.Core\Hello.LeetCode.Core.csproj" />
   </ItemGroup>
 </Project>
