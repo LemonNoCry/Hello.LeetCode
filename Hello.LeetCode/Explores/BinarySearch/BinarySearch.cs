@@ -1,4 +1,4 @@
-﻿namespace Hello.LeetCode.Explores;
+﻿namespace Hello.LeetCode.Explores.BinarySearch;
 
 public class BinarySearch
 {
@@ -42,6 +42,8 @@ public class BinarySearch
     {
         if (x == 0) return 0;
 
+        return MySqrtInternal(1, x);
+
         int MySqrtInternal(int min, int max)
         {
             if (min > max)
@@ -58,8 +60,6 @@ public class BinarySearch
 
             return square < x ? MySqrtInternal(m + 1, max) : MySqrtInternal(min, m - 1);
         }
-
-        return MySqrtInternal(1, x);
     }
 
     int guess(int num) => default;

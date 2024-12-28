@@ -1,4 +1,4 @@
-﻿namespace Hello.LeetCode.Explores;
+﻿namespace Hello.LeetCode.Explores.BinarySearch;
 
 public class BinarySearch2
 {
@@ -103,5 +103,63 @@ public class BinarySearch2
         }
 
         return l;
+    }
+
+    /// <summary>
+    /// Finds the minimum element in a sorted and rotated array of unique elements.<br/>
+    /// <br/>
+    /// https://leetcode.com/explore/learn/card/binary-search/126/template-ii/949/
+    /// </summary>
+    /// <param name="nums">
+    /// A sorted array of unique integers that has been rotated between 1 and n times,
+    /// where n is the length of the array.
+    /// </param>
+    /// <returns>
+    /// The minimum element in the array.
+    /// </returns>
+    /// <remarks>
+    /// This algorithm achieves O(log n) time complexity by using a binary search approach.
+    /// The rotation means the array may be split into two sorted subarrays, and the minimum
+    /// element is the pivot where the rotation occurred.
+    /// </remarks>
+    /// <example>
+    /// Example 1:
+    /// <code>
+    /// Input: nums = [3, 4, 5, 1, 2]
+    /// Output: 1
+    /// Explanation: The original array was [1, 2, 3, 4, 5] rotated 3 times.
+    ///
+    /// Example 2:
+    /// Input: nums = [4, 5, 6, 7, 0, 1, 2]
+    /// Output: 0
+    /// Explanation: The original array was [0, 1, 2, 4, 5, 6, 7] rotated 4 times.
+    ///
+    /// Example 3:
+    /// Input: nums = [11, 13, 15, 17]
+    /// Output: 11
+    /// Explanation: The array is not rotated, so the first element is the minimum.
+    /// </code>
+    /// </example>
+    /// <complexity>
+    /// Time Complexity: O(log n)
+    /// Space Complexity: O(1)
+    /// </complexity>
+    int FindMin(int[] nums)
+    {
+        int l = 0, r = nums.Length - 1;
+        while (l < r)
+        {
+            var m = l + (r - l) / 2;
+            if (nums[m] > nums[r])
+            {
+                l = m + 1;
+            }
+            else
+            {
+                r = m;
+            }
+        }
+
+        return nums[l];
     }
 }
