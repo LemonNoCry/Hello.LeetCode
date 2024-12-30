@@ -91,4 +91,57 @@ public class BinarySearchConclusion
 
         return false;
     }
+
+    /// <summary>
+    /// Finds the smallest character in a sorted array of characters that is lexicographically greater than the given target.<br/>
+    /// https://leetcode.com/explore/learn/card/binary-search/137/conclusion/977/
+    /// </summary>
+    /// <param name="letters">
+    /// A sorted array of characters in non-decreasing order. The array contains at least two different characters.
+    /// </param>
+    /// <param name="target">
+    /// A character for which the next lexicographically greater character is to be found.
+    /// </param>
+    /// <returns>
+    /// The smallest character in the array that is lexicographically greater than the target. If no such character exists,
+    /// returns the first character in the array.
+    /// </returns>
+    /// <remarks>
+    /// - The input array is guaranteed to be sorted in non-decreasing order.
+    /// - The array contains at least two distinct characters.
+    /// - The search is circular; if the target is greater than or equal to all characters in the array, the first character is returned.
+    /// </remarks>
+    /// <example>
+    /// <code>
+    /// var letters = new char[] { 'c', 'f', 'j' };
+    /// var target = 'a';
+    /// var result = FindSmallestLetterGreaterThanTarget(letters, target);
+    /// // result == 'c'
+    ///
+    /// var target2 = 'j';
+    /// var result2 = FindSmallestLetterGreaterThanTarget(letters, target2);
+    /// // result2 == 'c'
+    /// </code>
+    /// </example>
+    public char NextGreatestLetter(char[] letters, char target)
+    {
+        int l = 0, r = letters.Length - 1;
+        var result = letters[0];
+
+        while (l <= r)
+        {
+            var mid = l + (r - l) / 2;
+            if (letters[mid] > target)
+            {
+                result = letters[mid];
+                r = mid - 1;
+            }
+            else
+            {
+                l = mid + 1;
+            }
+        }
+
+        return result;
+    }
 }
