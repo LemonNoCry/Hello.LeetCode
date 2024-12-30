@@ -151,6 +151,4 @@ public class BinarySearch3
 
         return arr[l..(l + k)];
     }
-
-
 }
