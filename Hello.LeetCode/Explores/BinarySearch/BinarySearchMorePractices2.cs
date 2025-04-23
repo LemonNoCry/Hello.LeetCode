@@ -99,4 +99,108 @@ public class BinarySearchMorePractices2
 
         return default;
     }
+
+    /// <summary>
+    /// Find K-th Smallest Pair Distance<br/>
+    /// https://leetcode.com/explore/learn/card/binary-search/146/more-practices-ii/1041/
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <param name="k"></param>
+    /// <returns></returns>
+    public int SmallestDistancePair(int[] nums, int k)
+    {
+        Array.Sort(nums);
+
+        var low = 0;
+        var high = nums[^1] - nums[0];
+
+        while (low < high)
+        {
+            var mid = low + (high - low) / 2;
+            var count = CountPairsWithMaxDistance(nums, mid);
+            if (count < k)
+            {
+                low = mid + 1;
+            }
+            else
+            {
+                high = mid;
+            }
+        }
+
+        return low;
+
+        int CountPairsWithMaxDistance(int[] ns, int maxDistance)
+        {
+            int count = 0;
+            int arraySize = ns.Length;
+            int left = 0;
+
+            for (int right = 0; right < arraySize; ++right)
+            {
+                // Adjust the left pointer to maintain the window with distances <= maxDistance
+                while (ns[right] - ns[left] > maxDistance)
+                {
+                    ++left;
+                }
+
+                // Add the number of valid pairs ending at the current right index
+                count += right - left;
+            }
+
+            return count;
+        }
+    }
+
+    /// <summary>
+    /// Split Array Largest Sum <br/>
+    /// https://leetcode.com/explore/learn/card/binary-search/146/more-practices-ii/1042/ 
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <param name="k"></param>
+    /// <returns></returns>
+    public int SplitArrayLargestSumSplitArray(int[] nums, int k)
+    {
+        var left = 0;
+        var right = 0;
+        foreach (int num in nums)
+        {
+            left = Math.Max(left, num);
+            right += num;
+        }
+
+        while (left < right)
+        {
+            var mid = left + (right - left) / 2;
+
+            if (CanSplit(nums, mid, k))
+            {
+                right = mid;
+            }
+            else
+            {
+                left = mid + 1;
+            }
+        }
+
+        return left;
+    }
+
+    private bool CanSplit(int[] nums, int maxSum, int k)
+    {
+        int count = 1;
+        int sum = 0;
+
+        foreach (var num in nums)
+        {
+            sum += num;
+            if (sum > maxSum)
+            {
+                count++;
+                sum = num;
+            }
+        }
+
+        return count <= k;
+    }
 }
